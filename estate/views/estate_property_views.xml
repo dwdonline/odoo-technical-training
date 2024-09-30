@@ -79,4 +79,23 @@
             </form>
         </field>
     </record>
+    <!-- Add the Search -->
+    <record id="estate_property_view_search" model="ir.ui.view">
+        <field name="name">estate.property.search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="Search Property">
+                <field name="name"/>
+                <field name="description"/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <separator/>
+                <filter string="New" name="state_new" domain="[('state', '=', 'new')]"/>
+                <filter string="Offer Received" name="state_offer" domain="[('state', '=', 'offer_received')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="State" name="state" context="{'group_by': 'state'}"/>
+                    <filter string="Country" name="country" context="{'group_by': 'country_id'}"/>
+                    <filter string="Postcode" name="postcode" context="{'group_by': 'postcode'}"/>
+                </group>
+            </search>
+        </field>
 </odoo>
