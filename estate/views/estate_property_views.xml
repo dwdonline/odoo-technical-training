@@ -85,11 +85,11 @@
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <search string="Search Property">
-                <field name="name" string="Name" filter_domain="['|', ('name', 'ilike', self), ('description', 'ilike', self)]"/>
+                <field name="name" string="Title"/>
                 <filter string="Active" name="active" domain="[('active', '=', True)]"/>
                 <separator/>
-                <filter string="New" name="state_new" domain="[('state', '=', 'new')]"/>
-                <filter string="Offer Received" name="state_offer" domain="[('state', '=', 'offer_received')]"/>
+                <filter string="Available" name="available" domain="[('state', 'in', ['new', 'offer_received', 'offer_accepted'])]"/>
+                <!-- <filter string="Offer Received" name="state_offer" domain="[('state', '=', 'offer_received')]"/> -->
                 <group expand="0" string="Group By">
                     <filter string="State" name="state_id" context="{'group_by': 'state_id'}"/>
                     <filter string="Country" name="country" context="{'group_by': 'country_id'}"/>
