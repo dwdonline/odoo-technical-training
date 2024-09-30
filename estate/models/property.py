@@ -11,7 +11,7 @@ class EstateProperty(models.Model):
     name = fields.Char(string="Title", required=True, translate=True)
     description = fields.Text()
     date_availability = fields.Date(copy=False, default=fields.Date.add(fields.Date.today(), months=3))
-    property_type_id = fields.Many2one("estate.property.type", string="Property Type")
+    property_type_id = fields.Many2one("estate.property_type", string="Property Type")
     expected_price = fields.Float(required=True)
     selling_price = fields.Float(copy=False, readonly=True)
     bedrooms = fields.Integer(default=2)
