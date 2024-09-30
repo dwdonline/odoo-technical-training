@@ -1,8 +1,14 @@
 <?xml version="1.0"?>
 <odoo>
+    <!-- Add the Action -->
     <record id="estate_property_action" model="ir.actions.act_window">
         <field name="name">Estate Property</field>
         <field name="res_model">estate.property</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="estate_property_type_action" model="ir.actions.act_window">
+        <field name="name">Estate Property Type</field>
+        <field name="res_model">estate.property.type</field>
         <field name="view_mode">list,form</field>
     </record>
     <!-- Add the List -->
@@ -16,6 +22,15 @@
                 <field name="postcode"/>
                 <field name="state"/>
                 <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="estate_property_type_view_list" model="ir.ui.view">
+        <field name="name">estate.property.type.list</field>
+        <field name="model">estate.property.type</field>
+        <field name="arch" type="xml">
+            <list string="Property Types">
+                <field name="name"/>
             </list>
         </field>
     </record>
@@ -75,6 +90,19 @@
                             </group>
                         </page>
                     </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="estate_property_type_view_form" model="ir.ui.view">
+        <field name="name">estate.property.type.form</field>
+        <field name="model">estate.property.type</field>
+        <field name="arch" type="xml">
+            <form string="Property Type">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
                 </sheet>
             </form>
         </field>
