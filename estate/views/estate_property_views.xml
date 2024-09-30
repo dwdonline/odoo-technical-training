@@ -3,21 +3,42 @@
     <record id="estate_property_action" model="ir.actions.act_window">
         <field name="name">Estate Property Action</field>
         <field name="res_model">estate.property</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
-    <record id="estate_property_view_tree" model="ir.ui.view">
-        <field name="name">estate.property.tree</field>
+    <!-- Add the List -->
+    <record id="estate_property_view_list" model="ir.ui.view">
+        <field name="name">estate.property.list</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
-            <!-- <tree> -->
             <list string="Properties">
                 <field name="name"/>
                 <field name="state"/>
                 <field name="description"/>
                 <field name="postcode"/>
                 <field name="active"/>
-            <!-- </tree> -->
             </list>
         </field>
     </record>
+    <!-- Add the Form -->
+    <record id="estate_property_view_form" model="ir.ui.view">
+        <field name="name">estate.property.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form string="Property">
+                <sheet>
+                    <group>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
 </odoo>
