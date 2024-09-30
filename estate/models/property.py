@@ -10,7 +10,6 @@ class EstateProperty(models.Model):
 
     name = fields.Char(string="Title", required=True, translate=True)
     description = fields.Text()
-    postcode = fields.Char()
     date_availability = fields.Date(copy=False, default=fields.Date.add(fields.Date.today(), months=3))
     expected_price = fields.Float(required=True)
     selling_price = fields.Float(copy=False, readonly=True)
@@ -28,3 +27,7 @@ class EstateProperty(models.Model):
         [("new", "New"), ("offer_received", "Offer Received"), ("offer_accepted", "Offer Accepted"), ("sold", "Sold")],
         default="new",
     )
+    country_id = fields.Many2one("res.country", string="Country")
+    state_id = fields.Many2one("res.country.state", string="State")
+    city = fields.Char()
+    postcode = fields.Char()
