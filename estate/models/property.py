@@ -12,7 +12,7 @@ class EstateProperty(models.Model):
     description = fields.Text()
     date_availability = fields.Date(copy=False, default=fields.Date.add(fields.Date.today(), months=3))
     property_type_id = fields.Many2one("estate.property.type", string="Property Type")
-    seller_id = fields.Many2one("res.partner", string="Seller", required=True)
+    salesperson_id = fields.Many2one("res.users", string="Salesperson", default=lambda self: self.env.user)
     buyer_id = fields.Many2one("res.users", string="Buyer")
     expected_price = fields.Float(required=True)
     selling_price = fields.Float(copy=False, readonly=True)

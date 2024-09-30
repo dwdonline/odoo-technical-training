@@ -94,7 +94,7 @@
                         </page>
                         <page string="Parties">
                             <group>
-                                <field name="seller_id"/>
+                                <field name="selsalesperson_id"/>
                                 <field name="buyer_id"/>
                             </group>
                         </page>
