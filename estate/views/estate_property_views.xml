@@ -91,9 +91,9 @@
                 <filter string="New" name="state_new" domain="[('state', '=', 'new')]"/>
                 <filter string="Offer Received" name="state_offer" domain="[('state', '=', 'offer_received')]"/>
                 <group expand="0" string="Group By">
-                    <filter string="State" name="state" context="{'group_by': 'state'}"/>
+                    <filter string="State" name="state_id" context="{'group_by': 'state_id'}"/>
                     <filter string="Country" name="country" context="{'group_by': 'country_id'}"/>
-                    <filter string="Postcode" name="postcode" context="{'group_by': 'postcode'}"/>
+                    <filter string="Postal Code" name="postcode" context="{'group_by': 'postcode'}"/>
                 </group>
             </search>
         </field>
