@@ -24,9 +24,9 @@ class EstateProperty(models.Model):
     )
     active = fields.Boolean(default=False)
     state = fields.Selection(
-        string="Status",
-        selection=[("new", "New"), ("offer_received", "Offer Received"), ("offer_accepted", "Offer Accepted"), ("sold", "Sold")],
+       [("new", "New"), ("offer_received", "Offer Received"), ("offer_accepted", "Offer Accepted"), ("sold", "Sold")],
         default="new",
+        string="Status",
     )
     country_id = fields.Many2one("res.country", string="Country")
     state_id = fields.Many2one("res.country.state", string="State")
