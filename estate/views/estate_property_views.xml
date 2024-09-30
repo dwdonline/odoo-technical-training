@@ -33,6 +33,16 @@
                             </h1>
                         </div>
                     </group>
+                    <group>
+                        <group>
+                            <field name="state"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="date_availability"/>
+                            <field name="expected_price"/>
+                        </group>
+                    </group>
                     <notebook>
                         <page string="Description">
                             <field name="description"/>
