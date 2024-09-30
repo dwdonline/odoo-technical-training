@@ -34,43 +34,43 @@
                             </h1>
                         </div>
                     </group>
-                    <notebook>
-                        <page string="Description">
-                            <field name="description"/>
-                        </page>
-                        <page string="Status">
-                            <group>
-                                <field name="state"/>
-                                <field name="active"/>
-                            </group>
-                        <page string="Details">
-                            <group>
-                                <group>
-                                    <field name="date_availability"/>
-                                    <field name="bedrooms"/>
-                                    <field name="living_area"/>
-                                    <field name="facades"/>
-                                </group>
-                                <group>
-                                    <field name="garage"/>
-                                    <field name="garden"/>
-                                    <field name="garden_area"/>
-                                    <field name="garden_orientation"/>
-                                </group>
-                            </group>
-                        </page>
-                        <page string="Price">
-                            <field name="expected_price"/>
-                            <field name="selling_price"/>
-                        </page>
-                        <page string="Location">
-                            <field name="country_id"/>
-                            <field name="state_id"/>
-                            <field name="city"/>
-                            <field name="postcode"/>
-                        </page>
-                    </notebook>
                 </sheet>
+                <notebook>
+                    <page string="Description">
+                        <field name="description"/>
+                    </page>
+                    <page string="Status">
+                        <group>
+                            <field name="state"/>
+                            <field name="active"/>
+                        </group>
+                    <page string="Details">
+                        <group>
+                            <group>
+                                <field name="date_availability"/>
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                                <field name="facades"/>
+                            </group>
+                            <group>
+                                <field name="garage"/>
+                                <field name="garden"/>
+                                <field name="garden_area"/>
+                                <field name="garden_orientation"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Price">
+                        <field name="expected_price"/>
+                        <field name="selling_price"/>
+                    </page>
+                    <page string="Location">
+                        <field name="country_id"/>
+                        <field name="state_id"/>
+                        <field name="city"/>
+                        <field name="postcode"/>
+                    </page>
+                </notebook>
             </form>
         </field>
     </record>
