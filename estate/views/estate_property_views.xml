@@ -73,6 +73,9 @@
                                     <field name="garden_area"/>
                                     <field name="garden_orientation"/>
                                 </group>
+                                <group>
+                                    <field name="property_type_id"/>
+                                </group>
                             </group>
                         </page>
                         <page string="Price">
@@ -87,6 +90,12 @@
                                 <field name="state_id"/>
                                 <field name="city"/>
                                 <field name="postcode"/>
+                            </group>
+                        </page>
+                        <page string="Parties">
+                            <group>
+                                <field name="seller_id"/>
+                                <field name="buyer_id"/>
                             </group>
                         </page>
                     </notebook>
