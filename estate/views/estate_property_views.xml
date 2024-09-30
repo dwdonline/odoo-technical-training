@@ -9,13 +9,15 @@
         <field name="name">estate.property.tree</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
-            <tree>
+            <!-- <tree> -->
+            <list string="Properties">
                 <field name="name"/>
                 <field name="state"/>
                 <field name="description"/>
                 <field name="postcode"/>
                 <field name="active"/>
-            </tree>
+            <!-- </tree> -->
+            </list>
         </field>
     </record>
 </odoo>
