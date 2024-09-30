@@ -12,9 +12,8 @@
             <tree>
                 <field name="name"/>
                 <field name="state"/>
-                <field name="property_type_id"/>
-                <field name="city"/>
-                <field name="zip"/>
+                <field name="description"/>
+                <field name="postcode"/>
                 <field name="active"/>
             </tree>
         </field>
