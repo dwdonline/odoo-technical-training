@@ -85,8 +85,7 @@
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <search string="Search Property">
-                <field name="name"/>
-                <field name="description"/>
+                <field name="name" string="Name" filter_domain="['|', ('name', 'ilike', self), ('description', 'ilike', self)]"/>
                 <filter string="Active" name="active" domain="[('active', '=', True)]"/>
                 <separator/>
                 <filter string="New" name="state_new" domain="[('state', '=', 'new')]"/>
