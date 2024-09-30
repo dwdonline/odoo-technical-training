@@ -29,31 +29,33 @@
                     <group>
                         <div class="oe_title">
                             <h1>
-                                <field name="name" />
                                 <span class="o_stat_text">Name</span>
+                                <field name="name" />
                             </h1>
                         </div>
-                    </group>
-                    <group>
-                        <group>
-                            <field name="state"/>
-                            <field name="active"/>
-                        </group>
                     </group>
                     <notebook>
                         <page string="Description">
                             <field name="description"/>
                         </page>
+                        <page string="Status">
+                            <group>
+                                <field name="state"/>
+                                <field name="active"/>
+                            </group>
                         <page string="Details">
-                            <field name="date_availability"/>
-                            <field name="bedrooms"/>
-                            <field name="living_area"/>
-                            <field name="facades"/>
-                            <field name="garage"/>
-                            <field name="garden"/>
-                            <field name="garden_area"/>
-                            <field name="garden_orientation"/>
-                            <field name="postcode"/>
+                            <group>
+                                <field name="date_availability"/>
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                                <field name="facades"/>
+                            </group>
+                            <group>
+                                <field name="garage"/>
+                                <field name="garden"/>
+                                <field name="garden_area"/>
+                                <field name="garden_orientation"/>
+                            </group>
                         </page>
                         <page string="Price">
                             <field name="expected_price"/>
