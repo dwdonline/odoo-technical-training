@@ -26,15 +26,12 @@ class EstatePropertyOffer(models.Model):
         self.status = 'accepted'
         for offer in self:
             offer.property_id.selling_price = offer.price
-        self.property_id.status = 'sold'
 
     def action_refuse_offer(self):
         self.status = 'refused'
 
     def action_cancel_offer(self):
         self.status = 'cancelled'
-        self.property_id.status = 'available'
 
     def action_pending_offer(self):
         self.status = 'pending'
-        self.property_id.status = 'available'

@@ -20,12 +20,6 @@
                 <field name="deadline"/>
                 <field name="validity"/>
                 <field name="currency_id"/>
-                <field name="status" widget="statusbar" statusbar_visible="accepted,pending,refused">
-                    <button name="action_accept_offer" icon="fa-check"/>
-                    <button name="action_refuse_offer" icon="fa-close"/>
-                    <button name="action_pending_offer" icon="fa-clock-o"/>
-                    <button name="action_cancel_offer" icon="fa-ban"/>
-                </field>
                 <button name="action_accept_offer" type="object" icon="fa-check"/>
                 <button name="action_refuse_offer" type="object" icon="fa-close"/>
                 <button name="action_pending_offer" type="object" icon="fa-clock-o"/>
