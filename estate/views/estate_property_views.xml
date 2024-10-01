@@ -47,6 +47,7 @@
                 <field name="name"/>
             </list>
         </field>
+    </record>
     <!-- Add the Form -->
     <record id="estate_property_view_form" model="ir.ui.view">
         <field name="name">estate.property.form</field>
