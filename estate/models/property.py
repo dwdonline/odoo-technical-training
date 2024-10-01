@@ -118,14 +118,24 @@ class EstateProperty(models.Model):
             estate.state = "canceled"
 
     # Delete property and all related offers
-    def action_delete_property(self):
+    def _unlink_if_new_canceled(self):
         for estate in self:
             if estate in self:
                 if estate.state not in ("new", "canceled"):
                     raise UserError(_("You cannot delete a property that is not new or canceled"))
-            else:
-                estate.unlink()
 
+    # Create property
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            property = self.env["estate.property"].browse(vals["property_id"])
+            if property.offer_ids:
+                min_price = min(property.offer_ids.mapped("price"))
+                if vals["price"] < min_price:
+                    raise UserError(_("The offer must be higher than %s") % min_price)
+                property.state = "offer_received"
+        return super().create(vals_list)
+    
     # MySQL constraint to ensure that the expected price is always lower than the selling price
     _sql_constraints = [
         ("check_selling_price", "CHECK(selling_price >= 0)", "The selling price must be positive"),

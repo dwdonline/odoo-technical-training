@@ -30,7 +30,6 @@
                     <header>
                         <button name="action_sell_property" string="Sold" type="object"/>
                         <button name="action_cancel_property" string="Cancel" type="object"/>
-                        <button name="action_delete_property" string="Delete" type="object" class="btn-danger"/>
                     </header>
                     <group>
                             <h2><field name="name" /></h2>
