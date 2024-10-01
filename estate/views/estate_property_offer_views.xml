@@ -21,8 +21,8 @@
                 <field name="validity"/>
                 <field name="currency_id"/>
                 <!-- Add the buttons to Accept or Refuse the Offer -->
-                <button name="action_accept_offer" string="Accept" states="draft" type="object" icon="fa-check"/>
-                <button name="action_refuse_offer" string="Refuse" states="draft" type="object" icon="fa-close"/>
+                <button name="action_accept_offer" string="Accept" type="object" icon="fa-check"/>
+                <button name="action_refuse_offer" string="Refuse" type="object" icon="fa-close"/>
             </list>
         </field>
     </record>
