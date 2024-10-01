@@ -49,10 +49,23 @@ class EstateProperty(models.Model):
             estate.total_area = estate.garden_area + estate.living_area
 
     # Total offers
-    total_offers = fields.Integer(compute="_compute_total_offers", string=" Total Offers")
+    # total_offers = fields.Integer(compute="_compute_total_offers", string=" Total Offers")
+    # def _compute_total_offers(self):
+    #     for estate in self:
+    #         estate.total_offers = len(estate.offer_ids)
+    total_offers = fields.Integer(compute="_compute_total_offers", string="Total Offers")
+    offers_label = fields.Char(compute="_compute_offers_label", string="Offers Label")
+
     def _compute_total_offers(self):
         for estate in self:
             estate.total_offers = len(estate.offer_ids)
+
+    def _compute_offers_label(self):
+        for estate in self:
+            if estate.total_offers < 1:
+                estate.offers_label = "No Offers"
+            else:
+                estate.offers_label = f"Total Offers ({estate.total_offers})"
             
     # Computed best offer
     best_price = fields.Float(compute="_compute_best_price", string="Best Price")
