@@ -69,9 +69,8 @@
                                 <group>
                                     <field name="garage"/>
                                     <field name="garden"/>
-                                    <!-- <field name="garden_area" attrs="{'invisible': [('garden', '=', False)]}"/> -->
-                                    <field name="garden_area" invisible="garden = False"/>
-                                    <field name="garden_orientation" invisible="garden = False"/>
+                                    <field name="garden_area" invisible="garden == False"/>
+                                    <field name="garden_orientation" invisible="garden == False"/>
                                 </group>
                                 <group>
                                     <field name="property_type_id"/>
