@@ -85,6 +85,15 @@
                                 <field name="buyer_id"/>
                             </group>
                         </page>
+                        <page string="Offers">
+                            <field name="offer_ids" widget="one2many_list">
+                                <tree string="Offers">
+                                    <field name="partner_id"/>
+                                    <field name="price"/>
+                                    <field name="status"/>
+                                </tree>
+                            </field>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
