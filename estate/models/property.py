@@ -53,9 +53,6 @@ class EstateProperty(models.Model):
     def _compute_total_offers(self):
         for estate in self:
             estate.total_offers = len(estate.offer_ids)
-        # if there are no offers, set the string to "No offers"
-        if estate.total_offers == 0:
-            estate.total_offers.string = "No offers"
             
     # Computed best offer
     best_price = fields.Float(compute="_compute_best_price", string="Best Price")
