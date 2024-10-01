@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Estate module for managing real estate properties and clients
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 class EstateProperty(models.Model):
@@ -89,9 +89,9 @@ class EstateProperty(models.Model):
     def action_sell_property(self):
         for property in self:
             if property.state == "sold":
-                raise UserError("This property is already sold")
+                raise UserError(_("This property is already sold"))
             if property.state == "canceled":
-                raise UserError("This property is canceled, so it cannot be sold")
+                raise UserError(_("This property is canceled, so it cannot be sold"))
             property.state = "sold"
 
     # Mark property as canceled with action_cancel_property
