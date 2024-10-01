@@ -19,7 +19,7 @@
                 <field name="offer_date"/>
                 <field name="validity"/>
                 <field name="currency_id"/>
-            </tlist>
+            </list>
         </field>
     </record>
     <!-- Add the Form -->
