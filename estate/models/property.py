@@ -2,6 +2,7 @@
 # Estate module for managing real estate properties and clients
 
 from odoo import api, fields, models
+from odoo.exceptions import UserError
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -46,6 +47,12 @@ class EstateProperty(models.Model):
         for estate in self:
             estate.total_area = estate.garden_area + estate.living_area
 
+    # Total offers
+    total_offers = fields.Integer(compute="_compute_total_offers", string="Total Offers")
+    def _compute_total_offers(self):
+        for estate in self:
+            estate.total_offers = len(estate.offer_ids)
+
     # Computed best offer, but if the best offer is 0 or below, then say "No offers"
     best_price = fields.Float(compute="_compute_best_price", string="Best Price")
 
@@ -77,3 +84,16 @@ class EstateProperty(models.Model):
             self.garden_orientation = "north"
         else:
             self.garden_area = self.garden_orientation = False
+
+    # Mark property as sold with action_sell_property and account for error
+    def action_sell_property(self):
+        for property in self:
+            if property.state == "sold":
+                raise UserError("This property is already sold")
+            if property.state == "canceled":
+                raise UserError("This property is canceled, so it cannot be sold")
+            property.state = "sold"
+
+    # Mark property as canceled with action_cancel_property
+    def action_cancel_property(self):
+        self.state = "cancelled"
