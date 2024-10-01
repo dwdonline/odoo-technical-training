@@ -29,8 +29,8 @@
             <form string="Property">
                 <sheet>
                     <header>
-                        <button name="action_sell_property" string="Sold" type="object" options="{'invisible': [('state', '=', 'canceled')]}"/>
-                        <button name="action_cancel_property" string="Cancel" type="object" options="{'invisible': [('state', '=', 'sold')]}"/>
+                        <button name="action_sell_property" string="Sold" type="object" invisible="not state == 'canceled'"/>
+                        <button name="action_cancel_property" string="Cancel" type="object" invisible="not state == 'sold'"/>
                     </header>
                     <group>
                             <h2><field name="name" /></h2>
@@ -69,8 +69,9 @@
                                 <group>
                                     <field name="garage"/>
                                     <field name="garden"/>
-                                    <field name="garden_area" options="{'invisible': [('garden', '=', False)]}"/>
-                                    <field name="garden_orientation" options="{'invisible': [('garden', '=', False)]}"/>
+                                    <!-- <field name="garden_area" attrs="{'invisible': [('garden', '=', False)]}"/> -->
+                                    <field name="garden_area" invisible="garden = False"/>
+                                    <field name="garden_orientation" invisible="garden = False"/>
                                 </group>
                                 <group>
                                     <field name="property_type_id"/>
@@ -98,7 +99,7 @@
                             </group>
                         </page> -->
                         <page string="Offers">
-                            <field name="offer_ids" widget="one2many_list" readonly="1" options="{'readonly': [('state', 'in', ['offer_accepted', 'sold', 'canceled'])]}"/>
+                            <field name="offer_ids" readonly="state in ['offer_accepted', 'sold', 'canceled']"/>
                         </page>
                     </notebook>
                 </sheet>
