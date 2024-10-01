@@ -118,6 +118,7 @@ class EstateProperty(models.Model):
             estate.state = "canceled"
 
     # Delete property and all related offers
+    @api.ondelete(at_uninstall=False)
     def _unlink_if_new_canceled(self):
         for estate in self:
             if estate in self:

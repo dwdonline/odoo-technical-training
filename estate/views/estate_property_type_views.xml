@@ -28,7 +28,11 @@
                     </group>
                     <notebook>
                         <page string="Properties">
-                            <field name="property_ids"/>
+                            <list>
+                                <field name="property_ids"/>
+                                <field name="expected_price"/>
+                                <field name="status"/>
+                            </list>
                         </page>
                     </notebook>
                 </sheet>
