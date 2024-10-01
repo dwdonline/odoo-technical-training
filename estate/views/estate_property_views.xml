@@ -37,7 +37,7 @@
                         </group>
                         <group>
                             <field name="best_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                        <group>
+                        </group>
                     </group>
                     <notebook>
                         <page string="Description">
