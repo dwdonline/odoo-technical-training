@@ -88,7 +88,7 @@
                         <page string="Offers">
                             <field name="offer_ids" widget="one2many_list">
                                 <tree string="Offers">
-                                    <field name="partner_id"/>
+                                    <field name="buyer_id"/>
                                     <field name="price"/>
                                     <field name="status"/>
                                 </tree>
