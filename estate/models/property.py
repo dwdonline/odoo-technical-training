@@ -120,7 +120,11 @@ class EstateProperty(models.Model):
     # Delete property and all related offers
     def action_delete_property(self):
         for estate in self:
-            estate.unlink()
+            if estate in self:
+                if estate.state not in ("new", "canceled"):
+                    raise UserError(_("You cannot delete a property that is not new or canceled"))
+            else:
+                estate.unlink()
 
     # MySQL constraint to ensure that the expected price is always lower than the selling price
     _sql_constraints = [
