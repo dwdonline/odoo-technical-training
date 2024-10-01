@@ -99,4 +99,9 @@ class EstateProperty(models.Model):
 
     # Mark property as canceled with action_cancel_property
     def action_cancel_property(self):
-        self.state = "cancelled"
+        for estate in self:
+            if estate.state == "sold":
+                raise UserError(_("This property is already sold"))
+            if estate.state == "canceled":
+                raise UserError(_("This property is already canceled"))
+            estate.state = "canceled"
