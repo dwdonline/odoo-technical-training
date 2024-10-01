@@ -48,12 +48,15 @@ class EstateProperty(models.Model):
             estate.total_area = estate.garden_area + estate.living_area
 
     # Total offers
-    total_offers = fields.Integer(compute="_compute_total_offers", string="Total Offers")
+    total_offers = fields.Integer(compute="_compute_total_offers", string=" Total Offers")
     def _compute_total_offers(self):
         for estate in self:
             estate.total_offers = len(estate.offer_ids)
+        # if there are no offers, set the string to "No offers"
+        if estate.total_offers == 0:
+            estate.total_offers = "No offers"
 
-    # Computed best offer, but if the best offer is 0 or below, then say "No offers"
+    # Computed best offer
     best_price = fields.Float(compute="_compute_best_price", string="Best Price")
 
     @api.depends("offer_ids.price")
