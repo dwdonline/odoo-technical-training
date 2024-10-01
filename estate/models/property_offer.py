@@ -13,6 +13,7 @@ class EstatePropertyOffer(models.Model):
         default='pending',
         required=True
     )
+    property_id = fields.Many2one('estate.property', required=True)
     partner_id = fields.Many2one('res.partner', required=True)
     property_id = fields.Many2one('estate.property', required=True, ondelete='cascade')
     validity = fields.Integer(string='Offer Validity (days)', default=7, required=True)
