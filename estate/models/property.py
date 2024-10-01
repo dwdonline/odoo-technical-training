@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 # Estate module for managing real estate properties and clients
 
-from odoo import fields, models
-
+from odoo import api, fields, models
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -32,9 +31,17 @@ class EstateProperty(models.Model):
     state_id = fields.Many2one("res.country.state", string="State")
     city = fields.Char()
     postcode = fields.Char()
+
     # Many2one relation with the partner model
     property_type_id = fields.Many2one("estate.property.type", string="Property Type")
     salesperson_id = fields.Many2one("res.users", string="Salesperson", default=lambda self: self.env.user)
     buyer_id = fields.Many2one("res.partner", string="Buyer", copy=False)
     tag_ids = fields.Many2many("estate.property.tag", string="Tags")
     offer_ids = fields.One2many("estate.property.offer", "property_id", string="Offers")
+
+    # Computed total area
+    total_area = fields.Integer(compute="_compute_total_area", store=True, string="Total Area")
+    @api.depends("garden_area", "living_area")
+    def _compute_total_area(self):
+        for estate in self:
+            estate.total_area = estate.garden_area + estate.living_area
