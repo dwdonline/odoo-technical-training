@@ -40,8 +40,40 @@ class EstateProperty(models.Model):
     offer_ids = fields.One2many("estate.property.offer", "property_id", string="Offers")
 
     # Computed total area
-    total_area = fields.Integer(compute="_compute_total_area", store=True, string="Total Area")
+    total_area = fields.Integer(compute="_compute_total_area", string="Total Area")
     @api.depends("garden_area", "living_area")
     def _compute_total_area(self):
         for estate in self:
             estate.total_area = estate.garden_area + estate.living_area
+
+    # Computed best offer, but if the best offer is 0 or below, then say "No offers"
+    best_price = fields.Float(compute="_compute_best_price", string="Best Price")
+
+    @api.depends("offer_ids.price")
+    def _compute_best_price(self):
+        for estate in self:
+            if property.offer_ids:
+                estate.best_price = max(estate.offer_ids.mapped("price")) # Get the highest price of all offers
+            else:
+                estate.best_price = 0
+
+    # validity and date_deadline
+    date_deadline = fields.Date(compute="_compute_date_deadline", inverse="_inverse_date_deadline", string="Deadline to accept offers")
+    validity = fields.Integer(default=7)
+    def _compute_date_deadline(self):
+        for estate in self:
+            create_date = estate.create_date or fields.Date.today()
+            estate.date_deadline = fields.Date.add(create_date, days=estate.validity)
+
+    def _inverse_date_deadline(self):
+        for estate in self:
+            estate.validity = (estate.date_deadline - fields.Date.to_date(estate.create_date)).days
+
+    # Onchange for garden
+    @api.onchange("garden")
+    def _onchange_garden(self):
+        if self.garden:
+            self.garden_area = 10
+            self.garden_orientation = "north"
+        else:
+            self.garden_area = self.garden_orientation = False

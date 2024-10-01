@@ -29,14 +29,15 @@
                 <sheet>
                     <group>
                             <h2><field name="name" /></h2>
+                            <field name="tag_ids" widget="many2many_tags"/>
                     </group>
                     <group>
                         <group>
-                            <field name="tag_ids" widget="many2many_tags"/>
-                        </group>
-                        <group>
                             <field name="total_area"/>
                         </group>
+                        <group>
+                            <field name="best_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        <group>
                     </group>
                     <notebook>
                         <page string="Description">
