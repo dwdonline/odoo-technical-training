@@ -33,9 +33,13 @@
                                 <span class="o_stat_text">Name</span>
                                 <field name="name" />
                             </h1>
-                            <field name="tag_ids" widget="many2many_tags"/>
-                            <field name="total_area"/>
                         </div>
+                        <group>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="total_area"/>
+                        </group>
                     </group>
                     <notebook>
                         <page string="Description">
