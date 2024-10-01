@@ -2,7 +2,8 @@
 # Estate module for managing real estate properties and clients
 
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
+from odoo.tools.float_utils import float_is_zero, float_compare
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -105,3 +106,19 @@ class EstateProperty(models.Model):
             if estate.state == "canceled":
                 raise UserError(_("This property is already canceled"))
             estate.state = "canceled"
+
+    # MySQL constraint to ensure that the expected price is always lower than the selling price
+    _sql_constraints = [
+        ("check_selling_price", "CHECK(seilling_price >= 0)", "The selling price must be positive"),
+        ("check_expected_price", "CHECK(expected_price >= 0)", "The expected price must be positive"),
+        ("unique_name", "UNIQUE(name)", "The property title must be unique"),
+    ]
+
+    # Ensure that the selling price is not 90% lower than the expected price
+    @api.constrains("selling_price", "expected_price")
+    def _check_selling_price(self):
+        for estate in self:
+            if (not float_is_zero(estate.selling_price, precision_rounding=0.01) and
+                    float_compare(estate.selling_price, 0.9 * estate.expected_price, precision_rounding=0.01) < 0
+                ):
+                raise ValidationError(_("The selling price should not be lower than 90% of the expected price"))
