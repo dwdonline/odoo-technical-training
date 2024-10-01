@@ -33,7 +33,7 @@
                     </header>
                     <group>
                             <h2><field name="name" /></h2>
-                            <field name="tag_ids" widget="many2many_tags"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                             <field name="salesperson_id"/>
                     </group>
                     <group>
