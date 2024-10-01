@@ -14,6 +14,7 @@
             <list string="Properties">
                 <field name="name"/>
                 <field name="description"/>
+                <field name="tag_ids" widget="many2many_tags"/>
                 <field name="postcode"/>
                 <field name="state"/>
                 <field name="active"/>
@@ -28,8 +29,8 @@
             <form string="Property">
                 <sheet>
                     <header>
-                        <button name="action_sell_property" string="Sold" type="object"/>
-                        <button name="action_cancel_property" string="Cancel" type="object"/>
+                        <button name="action_sell_property" string="Sold" type="object" attrs="{'invisible': [('state', '=', 'canceled')]}"/>
+                        <button name="action_cancel_property" string="Cancel" type="object" attrs="{'invisible': [('state', '=', 'sold')]}"/>
                     </header>
                     <group>
                             <h2><field name="name" /></h2>
@@ -68,8 +69,8 @@
                                 <group>
                                     <field name="garage"/>
                                     <field name="garden"/>
-                                    <field name="garden_area"/>
-                                    <field name="garden_orientation"/>
+                                    <field name="garden_area" attrs="{'invisible': [('garden', '=', False)]}"/>
+                                    <field name="garden_orientation" attrs="{'invisible': [('garden', '=', False)]}"/>
                                 </group>
                                 <group>
                                     <field name="property_type_id"/>
@@ -97,7 +98,7 @@
                             </group>
                         </page> -->
                         <page string="Offers">
-                            <field name="offer_ids" widget="one2many_list"/>
+                            <field name="offer_ids" widget="one2many_list" readonly="1" attrs="{'readonly': [('state', 'in', ['offer_accepted', 'sold', 'canceled'])]}"/>
                         </page>
                     </notebook>
                 </sheet>
