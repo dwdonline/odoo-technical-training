@@ -20,9 +20,9 @@
                 <field name="deadline"/>
                 <field name="validity"/>
                 <field name="currency_id"/>
-                <button name="action_accept_offer" type="object" icon="fa-check" title="Accept" attrs="{'invisible': [('status', '!=', 'pending')]}"/>
-                <button name="action_refuse_offer" type="object" icon="fa-close" title="Refuse" attrs="{'invisible': [('status', '!=', 'pending')]}"/>
-                <button name="action_pending_offer" type="object" icon="fa-clock-o" title="Pending" attrs="{'invisible': [('status', '!=', 'refused')]}"/>
+                <button name="action_accept_offer" type="object" icon="fa-check" title="Accept" options="{'invisible': [('status', '!=', 'pending')]}"/>
+                <button name="action_refuse_offer" type="object" icon="fa-close" title="Refuse" options="{'invisible': [('status', '!=', 'pending')]}"/>
+                <button name="action_pending_offer" type="object" icon="fa-clock-o" title="Pending" options="{'invisible': [('status', '!=', 'refused')]}"/>
                 <button name="action_cancel_offer" type="object" icon="fa-ban" title="Cancel"/>
             </list>
         </field>
