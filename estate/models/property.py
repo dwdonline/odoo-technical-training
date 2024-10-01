@@ -107,12 +107,18 @@ class EstateProperty(models.Model):
                 raise UserError(_("This property is already canceled"))
             estate.state = "canceled"
 
+    # Delete property and all related offers
+    def action_delete_property(self):
+        for estate in self:
+            estate.offer_ids.unlink()
+            estate.unlink()
+
     # MySQL constraint to ensure that the expected price is always lower than the selling price
-    _sql_constraints = [
-        ("check_selling_price", "CHECK(seilling_price >= 0)", "The selling price must be positive"),
-        ("check_expected_price", "CHECK(expected_price >= 0)", "The expected price must be positive"),
-        ("unique_name", "UNIQUE(name)", "The property title must be unique"),
-    ]
+    # _sql_constraints = [
+    #     ("check_selling_price", "CHECK(seilling_price >= 0)", "The selling price must be positive"),
+    #     ("check_expected_price", "CHECK(expected_price >= 0)", "The expected price must be positive"),
+    #     ("unique_name", "UNIQUE(name)", "The property title must be unique"),
+    # ]
 
     # Ensure that the selling price is not 90% lower than the expected price
     @api.constrains("selling_price", "expected_price")
