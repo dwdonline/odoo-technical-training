@@ -24,7 +24,7 @@ class EstateProperty(models.Model):
     )
     active = fields.Boolean(default=False)
     state = fields.Selection(
-       [("new", "New"), ("offer_received", "Offer Received"), ("offer_accepted", "Offer Accepted"), ("sold", "Sold")],
+       [("new", "New"), ("offer_received", "Offer Received"), ("offer_accepted", "Offer Accepted"), ("sold", "Sold"), ("canceled", "Canceled")],
         default="new",
         string="Status",
     )
