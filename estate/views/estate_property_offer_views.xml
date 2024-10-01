@@ -11,7 +11,7 @@
         <field name="name">estate.property.offer.list</field>
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
-            <tree string="Property Offers">
+            <list>
                 <field name="property_id"/>
                 <field name="partner_id"/>
                 <field name="price"/>
@@ -19,7 +19,7 @@
                 <field name="offer_date"/>
                 <field name="validity"/>
                 <field name="currency_id"/>
-            </tree>
+            </tlist>
         </field>
     </record>
     <!-- Add the Form -->
