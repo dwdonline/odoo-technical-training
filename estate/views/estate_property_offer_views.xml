@@ -17,6 +17,7 @@
                 <field name="price"/>
                 <field name="status"/>
                 <field name="offer_date"/>
+                <field name="deadline"/>
                 <field name="validity"/>
                 <field name="currency_id"/>
             </list>
@@ -35,6 +36,7 @@
                         <field name="price"/>
                         <field name="status"/>
                         <field name="offer_date"/>
+                        <field name="deadline"/>
                         <field name="validity"/>
                         <field name="currency_id"/>
                     </group>
