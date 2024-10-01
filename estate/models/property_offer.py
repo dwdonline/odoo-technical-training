@@ -13,6 +13,7 @@ class EstatePropertyOffer(models.Model):
         default='pending',
         required=True
     )
+    offer_date = fields.Date(default=fields.Date.today, required=True)
     property_id = fields.Many2one('estate.property', required=True)
     partner_id = fields.Many2one('res.partner', required=True)
     property_id = fields.Many2one('estate.property', required=True, ondelete='cascade')
