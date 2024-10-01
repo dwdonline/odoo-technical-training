@@ -87,12 +87,12 @@ class EstateProperty(models.Model):
 
     # Mark property as sold with action_sell_property and account for error
     def action_sell_property(self):
-        for property in self:
-            if property.state == "sold":
+        for estate in self:
+            if estate.state == "sold":
                 raise UserError(_("This property is already sold"))
-            if property.state == "canceled":
+            if estate.state == "canceled":
                 raise UserError(_("This property is canceled, so it cannot be sold"))
-            property.state = "sold"
+            estate.state = "sold"
 
     # Mark property as canceled with action_cancel_property
     def action_cancel_property(self):
