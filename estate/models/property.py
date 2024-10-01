@@ -53,7 +53,7 @@ class EstateProperty(models.Model):
     # def _compute_total_offers(self):
     #     for estate in self:
     #         estate.total_offers = len(estate.offer_ids)
-    total_offers = fields.Integer(compute="_compute_total_offers", string="Total Offers")
+    total_offers = fields.Integer(compute="_compute_total_offers", string=" Total Offers")
     offers_label = fields.Char(compute="_compute_offers_label", string="Offers Label")
 
     def _compute_total_offers(self):
@@ -65,7 +65,7 @@ class EstateProperty(models.Model):
             if estate.total_offers < 1:
                 estate.offers_label = "No Offers"
             else:
-                estate.offers_label = f"Total Offers ({estate.total_offers})"
+                estate.offers_label = f" Total Offers ({estate.total_offers})"
             
     # Computed best offer
     best_price = fields.Float(compute="_compute_best_price", string="Best Price")
@@ -120,7 +120,6 @@ class EstateProperty(models.Model):
     # Delete property and all related offers
     def action_delete_property(self):
         for estate in self:
-            estate.offer_ids.unlink()
             estate.unlink()
 
     # MySQL constraint to ensure that the expected price is always lower than the selling price
